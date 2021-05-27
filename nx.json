@@ -25,6 +25,9 @@
     "component-testing-e2e": {
       "tags": [],
       "implicitDependencies": ["component-testing"]
+    },
+    "example-component": {
+      "tags": []
     }
   }
 }

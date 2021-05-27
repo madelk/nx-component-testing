@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@component-testing/example-component": [
+        "libs/example-component/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

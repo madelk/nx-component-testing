@@ -124,6 +124,27 @@
           }
         }
       }
+    },
+    "example-component": {
+      "root": "libs/example-component",
+      "sourceRoot": "libs/example-component/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/example-component/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/example-component"],
+          "options": {
+            "jestConfig": "libs/example-component/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
