@@ -1,0 +1,129 @@
+{
+  "version": 2,
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "defaultProject": "component-testing",
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "strict": true,
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "strict": true
+      }
+    }
+  },
+  "projects": {
+    "component-testing": {
+      "root": "apps/component-testing",
+      "sourceRoot": "apps/component-testing/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/component-testing",
+            "index": "apps/component-testing/src/index.html",
+            "main": "apps/component-testing/src/main.tsx",
+            "polyfills": "apps/component-testing/src/polyfills.ts",
+            "tsConfig": "apps/component-testing/tsconfig.app.json",
+            "assets": [
+              "apps/component-testing/src/favicon.ico",
+              "apps/component-testing/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/component-testing/src/environments/environment.ts",
+                  "with": "apps/component-testing/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "component-testing:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "component-testing:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/component-testing/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/component-testing"],
+          "options": {
+            "jestConfig": "apps/component-testing/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "component-testing-e2e": {
+      "root": "apps/component-testing-e2e",
+      "sourceRoot": "apps/component-testing-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/component-testing-e2e/cypress.json",
+            "tsConfig": "apps/component-testing-e2e/tsconfig.e2e.json",
+            "devServerTarget": "component-testing:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "component-testing:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/component-testing-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  }
+}
