@@ -1,0 +1,9 @@
+{
+  "component": {
+    "componentFolder": "./src/lib",
+    "testFiles": "**/*cypress.{js,jsx,ts,tsx}"
+  },
+  "env": {
+    "tsConfig": "./tsconfig.json"
+  }
+}
