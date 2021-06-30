@@ -1,4 +1,4 @@
-# `nx run example-component:cypress`
+# `nx run example-component:cypress --verbose`
 
 # ComponentTesting
 
