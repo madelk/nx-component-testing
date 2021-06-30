@@ -1,16 +1,14 @@
 const path = require('path')
-
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-
 module.exports = () => {
   return {
     mode: 'development',
     module: {
       rules: [
         {
-          test: /\.(js|tx)x?$/,
+          test: /\.(js|ts)x?$/,
           exclude: /node_modules/,
-          use: {
+          use: [{
             loader: require.resolve('babel-loader'),
             options: {
               babelrc: false,
@@ -26,9 +24,10 @@ module.exports = () => {
               ],
               plugins: []
             },
-          },
+          },{
+            loader: 'ts-loader'
+          }],
         },
-        { test: /\.tsx?$/, loader: 'ts-loader' }
       ],
     },
     resolve: {
