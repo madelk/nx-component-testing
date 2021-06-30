@@ -1,30 +1,37 @@
 const path = require('path')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-module.exports = () => {
+module.exports = (butts) => {
   return {
     mode: 'development',
     module: {
-      rules: [
+      rules: [{
+        test: /\.css$|\.scss$|\.sass$|\.less$|\.styl$/,
+        use: [
+          {
+            loader: require.resolve("style-loader"),
+          },
+          {
+            loader: require.resolve("css-loader"),
+          },
+          {
+            loader: require.resolve("sass-loader")
+          },
+        ],
+      },
         {
-          test: /\.(js|ts)x?$/,
-          exclude: /node_modules/,
-          use: [{
-            loader: require.resolve('babel-loader'),
-            options: {
-              babelrc: false,
-              presets: [
-                [
-                  '@babel/preset-react',
-                  {
-                    runtime: 'automatic',
-                  },
-                ],
-                '@babel/preset-env',
-                '@babel/preset-typescript',
-              ],
-              plugins: []
-            },
-          }],
+          test: /\.(ts|tsx)$/,
+          loader: require.resolve('babel-loader'),
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript',
+            ],
+            "plugins": [
+              ["@babel/plugin-proposal-decorators", { "legacy": true }],
+              ["@babel/plugin-proposal-class-properties", { "loose": true }]
+            ],
+          },
         },
       ],
     },
