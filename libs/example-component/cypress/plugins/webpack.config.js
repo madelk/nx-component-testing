@@ -24,8 +24,6 @@ module.exports = () => {
               ],
               plugins: []
             },
-          },{
-            loader: 'ts-loader'
           }],
         },
       ],
