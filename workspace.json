@@ -109,12 +109,7 @@
           "options": {
             "cypressConfig": "apps/component-testing-e2e/cypress.json",
             "tsConfig": "apps/component-testing-e2e/tsconfig.e2e.json",
-            "devServerTarget": "component-testing:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "component-testing:serve:production"
-            }
+            "skipServe": true
           }
         },
         "lint": {
