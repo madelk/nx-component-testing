@@ -30,6 +30,13 @@
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["*.cypress.tsx"],
+      "rules": {
+        "testing-library/await-async-query": "off",
+        "testing-library/prefer-screen-queries": "off"
+      }
     }
   ]
 }

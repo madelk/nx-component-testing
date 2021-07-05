@@ -138,6 +138,13 @@
             "testingType": "component"
           }
         },
+        "open-cypress": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "cypress open-ct",
+            "cwd": "libs/example-component"
+          }
+        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
