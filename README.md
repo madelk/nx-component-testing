@@ -1,4 +1,4 @@
-
+# `nx run example-component:cypress`
 
 # ComponentTesting
 

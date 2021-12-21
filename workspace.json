@@ -130,6 +130,21 @@
       "sourceRoot": "libs/example-component/src",
       "projectType": "library",
       "targets": {
+        "cypress": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "tsConfig": "libs/example-component/tsconfig.json",
+            "cypressConfig": "libs/example-component/cypress.json",
+            "testingType": "component"
+          }
+        },
+        "open-cypress": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "cypress open-ct",
+            "cwd": "libs/example-component"
+          }
+        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
